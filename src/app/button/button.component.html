@@ -1,0 +1,213 @@
+<h1>-button</h1>
+<div>
+    <button nz-button nzType="primary">Primary Button</button>
+    <button nz-button nzType="default">Default Button</button>
+    <button nz-button nzType="dashed">Dashed Button</button>
+    <button nz-button nzType="text">Text Button</button>
+    <a nz-button nzType="link">Link Button</a>
+</div>
+<div>
+    <button nz-button nzType="primary" nzLoading>
+        <span nz-icon nzType="poweroff"></span>
+        Loading
+      </button>
+      <button nz-button nzType="primary" nzSize="small" nzLoading>Loading</button>
+      <br />
+      <button nz-button nzType="primary">Click me!</button>
+      <button nz-button nzType="primary">
+        <span nz-icon nzType="poweroff"></span>
+        Click me!
+      </button>
+      <br />
+      <button nz-button nzLoading nzShape="circle"></button>
+      <button nz-button nzLoading nzType="primary" nzShape="circle"></button>
+</div>
+
+<div style="width: 300px"> 
+    <button nz-button nzType="primary" nzBlock>Primary</button>
+    <button nz-button nzType="default" nzBlock>Default</button>
+    <button nz-button nzType="dashed" nzBlock>Dashed</button>
+    <button nz-button nzType="text" nzBlock>Text</button>
+    <a nz-button nzType="link" nzBlock>Link</a>
+</div>
+
+<h1>-Typography</h1>
+<span nz-typography nzType="danger">Ant Design (danger)</span>
+<span nz-typography nzType="success">Ant Design (success)</span>
+<span nz-typography nzType="warning">Ant Design (warning)</span>
+
+<h1>-Divider</h1>
+
+<nz-divider nzDashed [nzText]="text">
+  <ng-template #text style="width: 300px">
+    <span nz-icon nzType="plus"></span>
+    Add
+  </ng-template>
+</nz-divider>
+
+<h1>-Grid</h1>
+
+<div nz-row>
+  <div nz-col nzSpan="12">col-12</div>
+  <div nz-col nzSpan="12">col-12</div>
+</div>
+<div nz-row>
+  <div nz-col nzSpan="8">col-8</div>
+  <div nz-col nzSpan="8">col-8</div>
+  <div nz-col nzSpan="8">col-8</div>
+</div>
+<div nz-row>
+  <div nz-col nzSpan="6">col-6</div>
+  <div nz-col nzSpan="6">col-6</div>
+  <div nz-col nzSpan="6">col-6</div>
+  <div nz-col nzSpan="6">col-6</div>
+</div>
+
+<h1>-Layout</h1>
+
+<nz-layout>
+  <nz-header>Header</nz-header>
+  <nz-layout>
+    <nz-sider>Sider</nz-sider>
+    <nz-content>Content</nz-content>
+  </nz-layout>
+  <nz-footer>Footer</nz-footer>
+</nz-layout>
+
+<h1>-Space</h1>
+<input type="range" [(ngModel)]="size" >
+<nz-slider [(ngModel)]="size"></nz-slider>
+<nz-space [nzSize]="size">
+  <button *nzSpaceItem nz-button nzType="primary">Button</button>
+  <button *nzSpaceItem nz-button nzType="default">Default</button>
+  <button *nzSpaceItem nz-button nzType="dashed">Dashed</button>
+  <a *nzSpaceItem nz-button nzType="link">Link</a>
+</nz-space>
+
+<h1>-Affix</h1>
+<div class="scrollable-container" #target>
+  <div class="background">
+    <nz-affix [nzTarget]="target" id="affix-container-target">
+      <button nz-button [nzType]="'primary'">
+        <span>Fixed at the top of container</span>
+      </button>
+    </nz-affix>
+  </div>
+</div>
+
+<h1>-breadcrumb</h1>
+
+<nz-breadcrumb>
+  <nz-breadcrumb-item>
+    <span nz-icon nzType="home"></span>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    <a>
+      <span nz-icon nzType="user"></span>
+      <span>Application List</span>
+    </a>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>Application</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<h1>-Dropdown</h1>
+
+<div>
+  <ng-container *ngFor="let position of listOfPosition">
+    <button nz-button nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="position">{{ position }}</button>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item>1st menu item length</li>
+        <li nz-menu-item>2nd menu item length</li>
+        <li nz-menu-item>3rd menu item length</li>
+      </ul>
+    </nz-dropdown-menu>
+  </ng-container>
+</div>
+
+<h1>-Menu</h1>
+
+<ul nz-menu nzMode="inline">
+  <li nz-submenu nzTitle="Navigation One" nzIcon="mail" nzOpen>
+    <ul>
+      <li nz-menu-group nzTitle="Item 1">
+        <ul>
+          <li nz-menu-item nzSelected>Option 1</li>
+          <li nz-menu-item>Option 2</li>
+        </ul>
+      </li>
+      <li nz-menu-group nzTitle="Item 2">
+        <ul>
+          <li nz-menu-item>Option 3</li>
+          <li nz-menu-item>Option 4</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="Navigation Two" nzIcon="appstore">
+    <ul>
+      <li nz-menu-item>Option 5</li>
+      <li nz-menu-item>Option 6</li>
+      <li nz-submenu nzTitle="Submenu">
+        <ul>
+          <li nz-menu-item>Option 7</li>
+          <li nz-menu-item>Option 8</li>
+          <li nz-submenu nzTitle="Submenu">
+            <ul>
+              <li nz-menu-item>Option 9</li>
+              <li nz-menu-item>Option 10</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="Navigation Three" nzIcon="setting">
+    <ul>
+      <li nz-menu-item>Option 11</li>
+      <li nz-menu-item>Option 12</li>
+      <li nz-menu-item>Option 13</li>
+    </ul>
+  </li>
+</ul>
+
+<h1>-PageHeader</h1>
+
+<nz-page-header
+class="site-page-header"
+nzBackIcon
+nzTitle="Title"
+nzSubtitle="This is a subtitle"
+></nz-page-header>
+
+<h1>-Pagination</h1>
+
+<nz-pagination [nzPageIndex]="1" [nzTotal]="500"></nz-pagination> 
+
+<h1>-Steps</h1>
+
+<nz-steps>
+  <nz-step nzTitle="Login" nzStatus="finish" nzIcon="user"></nz-step>
+  <nz-step nzTitle="Verification" nzStatus="finish" nzIcon="solution"></nz-step>
+  <nz-step nzTitle="Pay" nzStatus="process" nzIcon="loading"></nz-step>
+  <nz-step nzTitle="Done" nzStatus="wait" [nzIcon]="iconTemplate"></nz-step>
+  <ng-template #iconTemplate><span nz-icon nzType="smile"></span></ng-template>
+</nz-steps>
+
+<h1>-Autocomplete</h1>
+
+<div class="example-input">
+  <input
+    placeholder="input here"
+    nz-input
+    [nzAutocomplete]="auto"
+  />
+  <nz-autocomplete nzBackfill #auto></nz-autocomplete>
+</div>
+
+<h1>-Cascader</h1>
+
+<nz-cascader [nzOptions]="nzOptions" [(ngModel)]="values"></nz-cascader>
+&nbsp;
+<a href="javascript:;" (click)="changeNzOptions()" class="change-options">Change Options</a>
+

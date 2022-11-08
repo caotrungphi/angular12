@@ -1,0 +1,572 @@
+<h2>-icon</h2>
+
+<div class="icons-list">
+  <span nz-icon [nzType]="'smile'" [nzTheme]="'twotone'"></span>
+  <span nz-icon [nzType]="'heart'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb2f96'"></span>
+</div>
+
+<h2>-Checkbox</h2>
+
+<label nz-checkbox [(ngModel)]="checked">Checkbox</label>
+
+<h2>-picker</h2>
+
+<nz-date-picker [(ngModel)]="date" ></nz-date-picker>
+
+<h2>-input</h2>
+
+<nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+  <input type="text" nz-input placeholder="input search text" />
+</nz-input-group>
+<ng-template #suffixButton>
+  <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
+</ng-template>
+
+<h2>-input-number</h2>
+
+<nz-input-number [(ngModel)]="demoValue" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>
+
+<h2>-mention</h2>
+
+<nz-mention [nzSuggestions]="suggestions">
+  <textarea nz-input [nzAutosize]="{ minRows: 4, maxRows: 4 }" [(ngModel)]="inputValue" nzMentionTrigger></textarea>
+</nz-mention>
+
+<h2>-radio</h2>
+
+<nz-radio-group [(ngModel)]="radioValue">
+  <label nz-radio nzValue="A">A</label>
+  <label nz-radio nzValue="B">B</label>
+  <label nz-radio nzValue="C">C</label>
+  <label nz-radio nzValue="D">D</label>
+</nz-radio-group>
+
+<h2>-rate</h2>
+
+<nz-rate [(ngModel)]="value" [nzTooltips]="tooltips"></nz-rate>
+<span *ngIf="value" class="ant-rate-text">{{ value ? tooltips[value - 1] : '' }}</span>
+  
+<h2>-select</h2>
+
+<nz-select
+[nzMaxTagCount]="3"
+[nzMaxTagPlaceholder]="tagPlaceHolder"
+nzMode="multiple"
+nzPlaceHolder="Please select"
+[(ngModel)]="listOfSelectedValue"
+>
+<nz-option *ngFor="let item of listOfOption" [nzLabel]="item" [nzValue]="item"></nz-option>
+</nz-select>
+<ng-template #tagPlaceHolder let-selectedList>and {{ selectedList.length }} more selected</ng-template>
+
+<h2>-slider</h2>
+
+<nz-row>
+  <nz-col nzSpan="12">
+    <nz-slider [nzMin]="1" [nzMax]="20" [(ngModel)]="value1"></nz-slider>
+  </nz-col>
+  <div nz-col nzSpan="4">
+    <nz-input-number
+      [nzMin]="1"
+      [nzMax]="20"
+      [ngStyle]="{ marginLeft: '16px' }"
+      [(ngModel)]="value1"
+    ></nz-input-number>
+  </div>
+</nz-row>
+
+<h2>-switch</h2>
+
+<nz-switch
+[ngModel]="true"
+[nzCheckedChildren]="checkedTemplate"
+[nzUnCheckedChildren]="unCheckedTemplate"
+></nz-switch>
+<ng-template #checkedTemplate><span nz-icon nzType="check"></span></ng-template>
+<ng-template #unCheckedTemplate><span nz-icon nzType="close"></span></ng-template>
+  
+<h2>-time-picker</h2>
+
+<nz-time-picker [(ngModel)]="time" [nzDefaultOpenValue]="defaultOpenValue"></nz-time-picker>
+
+<h2>-transfer</h2>
+
+<nz-transfer
+[nzDataSource]="list"
+[nzDisabled]="disabled"
+nzShowSearch
+[nzFilterOption]="filterOption"
+></nz-transfer>
+<div style="margin-top: 8px;">
+<nz-switch [(ngModel)]="disabled" nzCheckedChildren="disabled" nzUnCheckedChildren="disabled"></nz-switch>
+<div></div>
+</div>
+
+<h2>-tree-select</h2>
+
+<nz-tree-select
+  style="width: 250px"
+  [nzExpandedKeys]="expandKeys"
+  [nzNodes]="nodes"
+  nzShowSearch
+  nzPlaceHolder="Please select"
+  [(ngModel)]="value2"
+></nz-tree-select>
+
+<h2>-upload</h2>
+
+<nz-upload
+  nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+  [nzHeaders]="{ authorization: 'authorization-text' }"
+>
+  <button nz-button>
+    <span nz-icon nzType="upload"></span>
+    Click to Upload
+  </button>
+</nz-upload>
+
+<h2>-avatar</h2>
+
+<nz-avatar-group>
+  <nz-avatar nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+  <nz-avatar style="background-color: #f56a00" nzText="U"></nz-avatar>
+  <nz-avatar style="background-color: #87d068" nz-tooltip nzTooltipTitle="NG-ZORRO User" nzIcon="user"></nz-avatar>
+  <nz-avatar style="background-color: #1890ff" nzText="NG"></nz-avatar>
+</nz-avatar-group>
+
+<h2>-badge</h2>
+
+<nz-space>
+  <nz-switch [(ngModel)]="show"></nz-switch>
+  <nz-badge nzStandalone [nzCount]="show ? 25 : 0"></nz-badge>
+  <nz-badge
+    nzStandalone
+    [nzCount]="show ? 4 : 0"
+    [nzStyle]="{ backgroundColor: '#fff', color: '#999', boxShadow: '0 0 0 1px #d9d9d9 inset' }"
+  ></nz-badge>
+  <nz-badge [nzCount]="show ? iconTemplate : 0" nzStandalone>
+    <a class="head-example"></a>
+  </nz-badge>
+  <ng-template #iconTemplate>
+    <span nz-icon nzType="clock-circle" class="ant-scroll-number-custom-component" style="color: #f5222d"></span>
+  </ng-template>
+  <nz-badge nzStandalone [nzCount]="show ? 109 : 0" [nzStyle]="{ backgroundColor: '#52c41a' }"></nz-badge>
+</nz-space>
+
+<h2>-calendar</h2>
+
+<div [ngStyle]="{ width: '300px', border: '1px solid #d9d9d9', borderRadius: '4px' }">
+  <nz-calendar
+    [nzFullscreen]="false"
+  ></nz-calendar>
+</div>
+
+<h2>-card</h2>
+
+<nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate">
+  <nz-card-meta nzTitle="Europe Street beat" nzDescription="www.instagram.com"></nz-card-meta>
+</nz-card>
+<ng-template #coverTemplate>
+  <img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
+</ng-template>
+
+<h2>-carousel</h2>
+
+<nz-carousel nzAutoPlay>
+  <div nz-carousel-content *ngFor="let index of array">
+    <h3>{{ index }}</h3>
+  </div>
+</nz-carousel>
+
+<h2>-collapse</h2>
+
+<nz-collapse>
+  <nz-collapse-panel
+    *ngFor="let panel of panels"
+    [nzHeader]="panel.name"
+    [nzActive]="panel.active"
+    [nzDisabled]="panel.disabled"
+  >
+    <p style="margin:0;">
+      A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome
+      guest in many households across the world.
+    </p>
+  </nz-collapse-panel>
+</nz-collapse>
+
+<h2>-comment</h2>
+
+<!-- <nz-list *ngIf="data.length" [nzDataSource]="data" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+  <ng-template #item let-item>
+    <nz-comment [nzAuthor]="item.author" [nzDatetime]="item.displayTime">
+      <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item.avatar"></nz-avatar>
+      <nz-comment-content>
+        <p>{{ item.content }}</p>
+      </nz-comment-content>
+    </nz-comment>
+  </ng-template>
+</nz-list> -->
+<nz-comment>
+  <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="user.avatar"></nz-avatar>
+  <nz-comment-content>
+    <nz-form-item>
+      <textarea [(ngModel)]="inputValue1" nz-input rows="4"></textarea>
+    </nz-form-item>
+    <nz-form-item>
+      <button nz-button nzType="primary" [nzLoading]="submitting" [disabled]="!inputValue1" (click)="handleSubmit()">
+        Add Comment
+      </button>
+    </nz-form-item>
+  </nz-comment-content>
+</nz-comment>
+
+<h2>-images</h2>
+ 
+<button nz-button nzType="primary" (click)="onClick()">Preview</button>
+
+<h2>-list</h2>
+
+<div style="margin-bottom: 8px;"><button nz-button (click)="change()">Switch Data</button></div>
+    <nz-list nzItemLayout="horizontal" [nzLoading]="loading">
+      <nz-list-item *ngFor="let item of data1">
+        <nz-list-item-meta
+          nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+          nzDescription="Ant Design, a design language for background applications, is refined by Ant UED Team"
+        >
+          <nz-list-item-meta-title>
+            <a href="https://ng.ant.design">{{ item.title }}</a>
+          </nz-list-item-meta-title>
+        </nz-list-item-meta>
+      </nz-list-item>
+      <nz-list-empty *ngIf="data1.length === 0"></nz-list-empty>
+    </nz-list>
+
+<h2>-popover</h2>
+
+<button
+  nz-button
+  nzType="primary"
+  nz-popover
+  nzPopoverTitle="Title"
+  [(nzPopoverVisible)]="visible"
+  nzPopoverTrigger="click"
+  [nzPopoverContent]="contentTemplate"
+>
+  Click me
+</button>
+<ng-template #contentTemplate>
+  <a (click)="clickMe()">Close</a>
+</ng-template>
+
+<h2>-segmented</h2>
+
+<nz-segmented [nzOptions]="options"></nz-segmented>
+
+<h2>-Statistic</h2>
+
+<nz-row [nzGutter]="16">
+  <nz-col [nzSpan]="12">
+    <nz-statistic [nzValue]="(1949101 | number)!" [nzTitle]="'Active Users'"></nz-statistic>
+  </nz-col>
+  <nz-col [nzSpan]="12">
+    <nz-statistic [nzValue]="(2019.111 | number: '1.0-2')!" [nzTitle]="'Account Balance (CNY)'"></nz-statistic>
+  </nz-col>
+</nz-row>
+
+<h2>-table</h2>
+
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.age }}</td>
+      <td>{{ data.address }}</td>
+      <td>
+        <a>Action 一 {{ data.name }}</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a>Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<h2>-tab</h2>
+
+<nz-tabset>
+<nz-tab nzTitle="Tab 1">Content of Tab Pane 1</nz-tab>
+<nz-tab nzTitle="Tab 2">Content of Tab Pane 2</nz-tab>
+<nz-tab nzTitle="Tab 3">Content of Tab Pane 3</nz-tab>
+</nz-tabset>
+
+<h2>-Tag</h2>
+
+<nz-tag nzColor="success">
+  <span nz-icon nzType="check-circle"></span>
+  <span>success</span>
+</nz-tag>
+<nz-tag nzColor="processing">
+  <span nz-icon nzType="sync" nzSpin></span>
+  <span>processing</span>
+</nz-tag>
+<nz-tag nzColor="error">
+  <span nz-icon nzType="close-circle"></span>
+  <span>error</span>
+</nz-tag>
+<nz-tag nzColor="warning">
+  <span nz-icon nzType="exclamation-circle"></span>
+  <span>warning</span>
+</nz-tag>
+<nz-tag nzColor="default">
+  <span nz-icon nzType="clock-circle"></span>
+  <span>default</span>
+</nz-tag>
+
+<h2>-timeline</h2>
+
+<nz-timeline nzMode="custom">
+  <nz-timeline-item nzPosition="left" [nzDot]="soccerTemplate">Alice 20'</nz-timeline-item>
+  <nz-timeline-item nzPosition="left" [nzDot]="soccerTemplate">Susan 28'</nz-timeline-item>
+  <nz-timeline-item nzPosition="right" nzColor="red" [nzDot]="soccerTemplate">Tim 45'</nz-timeline-item>
+  <nz-timeline-item nzPosition="left" [nzDot]="soccerTemplate">Bob 79'</nz-timeline-item>
+</nz-timeline>
+<ng-template #soccerTemplate>⚽</ng-template>
+
+<h2>-Tooltip</h2>
+
+<div style="margin-left:60px;">
+  <button nzTooltipTitle="prompt text" [nzTooltipPlacement]="['topLeft', 'leftTop']" nz-button nz-tooltip>
+    TL
+  </button>
+  <button nzTooltipTitle="prompt text" nzTooltipPlacement="top" nz-button nz-tooltip>Top</button>
+  <button nzTooltipTitle="prompt text" nzTooltipPlacement="topRight" nz-button nz-tooltip>TR</button>
+</div>
+<div style="float:left;width: 60px;">
+  <button nzTooltipTitle="prompt text" nzTooltipPlacement="leftTop" nz-button nz-tooltip>LT</button>
+  <button nzTooltipTitle="prompt text" nzTooltipPlacement="left" nz-button nz-tooltip>Left</button>
+  <button nzTooltipTitle="prompt text" nzTooltipPlacement="leftBottom" nz-button nz-tooltip>LB</button>
+</div>
+<div style="margin-left:270px;width: 60px;">
+  <button nzTooltipTitle="prompt text" nzTooltipPlacement="rightTop" nz-button nz-tooltip>RT</button>
+  <button nzTooltipTitle="prompt text" nzTooltipPlacement="right" nz-button nz-tooltip>Right</button>
+  <button nzTooltipTitle="prompt text" nzTooltipPlacement="rightBottom" nz-button nz-tooltip>RB</button>
+</div>
+<div style="margin-left:60px;clear: both;">
+  <button nzTooltipTitle="prompt text" nzTooltipPlacement="bottomLeft" nz-button nz-tooltip>BL</button>
+  <button nzTooltipTitle="prompt text" nzTooltipPlacement="bottom" nz-button nz-tooltip>Bottom</button>
+  <button nzTooltipTitle="prompt text" nzTooltipPlacement="bottomRight" nz-button nz-tooltip>BR</button>
+</div>
+
+<h2>-tree</h2>
+
+<nz-tree
+[nzData]="nodes1"
+nzCheckable
+nzMultiple
+[nzCheckedKeys]="defaultCheckedKeys"
+[nzExpandedKeys]="defaultExpandedKeys"
+[nzSelectedKeys]="defaultSelectedKeys"
+(nzClick)="nzEvent($event)"
+(nzExpandChange)="nzEvent($event)"
+(nzCheckBoxChange)="nzEvent($event)"
+></nz-tree>
+
+<h2>-tree-view</h2>
+
+<nz-tree-view [nzTreeControl]="treeControl" [nzDataSource]="dataSource">
+  <nz-tree-node *nzTreeNodeDef="let node" nzTreeNodePadding>
+    <nz-tree-node-toggle nzTreeNodeNoopToggle></nz-tree-node-toggle>
+    <nz-tree-node-option
+      [nzDisabled]="node.disabled"
+      [nzSelected]="selectListSelection.isSelected(node)"
+      (nzClick)="selectListSelection.toggle(node)"
+    >
+      {{ node.name }}
+    </nz-tree-node-option>
+  </nz-tree-node>
+
+  <nz-tree-node *nzTreeNodeDef="let node; when: hasChild" nzTreeNodePadding>
+    <nz-tree-node-toggle>
+      <span nz-icon nzType="caret-down" nzTreeNodeToggleRotateIcon></span>
+    </nz-tree-node-toggle>
+    <nz-tree-node-option
+      [nzDisabled]="node.disabled"
+      [nzSelected]="selectListSelection.isSelected(node)"
+      (nzClick)="selectListSelection.toggle(node)"
+    >
+      {{ node.name }}
+    </nz-tree-node-option>
+  </nz-tree-node>
+</nz-tree-view>
+
+<h2>-alert</h2>
+
+<nz-alert nzShowIcon nzType="success" nzMessage="Success Text" [nzAction]="actionTemplate1"></nz-alert>
+    <ng-template #actionTemplate1>
+      <button nz-button nzSize="small" nzType="text" >Undo</button></ng-template
+    >
+    <br />
+    <nz-alert
+      nzShowIcon
+      nzType="error"
+      nzMessage="Error Text"
+      [nzDescription]="descriptionTemplate1"
+      [nzAction]="actionTemplate2"
+    ></nz-alert>
+    <ng-template #descriptionTemplate1>
+      <p>Error Description Error Description Error Description Error Description</p>
+    </ng-template>
+    <ng-template #actionTemplate2>
+      <button nz-button nzSize="small" nzType="default" nzDanger >Detail</button>
+    </ng-template>
+    <br />
+    <nz-alert nzCloseable nzType="warning" nzMessage="Warning Text" [nzAction]="actionTemplate3"></nz-alert>
+    <ng-template #actionTemplate3>
+      <button nz-button nzSize="small" nzType="primary" nzGhost >Ignore</button>
+    </ng-template>
+    <br />
+    <nz-alert
+      nzShowIcon
+      nzType="info"
+      nzMessage="Info Text"
+      [nzDescription]="descriptionTemplate2"
+      [nzAction]="actionTemplate4"
+    ></nz-alert>
+    <ng-template #descriptionTemplate2>
+      <p>Info Description Info Description Info Description Info Description</p>
+    </ng-template>
+    <ng-template #actionTemplate4>
+      <nz-space nzDirection="vertical">
+        <button *nzSpaceItem nz-button nzSize="small" nzType="primary" >Accept</button>
+        <button *nzSpaceItem nz-button nzSize="small" nzType="default" nzDanger 
+          >Decline</button
+        >
+      </nz-space>
+    </ng-template>
+
+<h2>-alert</h2>
+
+<button nz-button nzType="primary" (click)="open()">Open</button>
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="visible1"
+  nzPlacement="right"
+  nzTitle="Basic Drawer"
+  (nzOnClose)="close()"
+>
+  <ng-container *nzDrawerContent>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+  </ng-container>
+</nz-drawer>
+
+<h2>-message</h2>
+
+<button nz-button (click)="createMessage('success')">Success</button>
+<button nz-button (click)="createMessage('error')">Error</button>
+<button nz-button (click)="createMessage('warning')">Warning</button>
+
+<h2>-Modal</h2>
+
+<button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <ng-container *nzModalContent>
+        <p>Content one</p>
+        <p>Content two</p>
+        <p>Content three</p>
+      </ng-container>
+    </nz-modal>
+
+    <h2>-notification</h2>
+
+<button nz-button [nzType]="'primary'" (click)="createBasicNotification()">Open the notification box</button>
+
+<h2>-Modal</h2>
+
+<a style="font-size: 20px"
+nz-popconfirm
+nzPopconfirmTitle="Are you sure delete this task?"
+nzPopconfirmPlacement="bottom"
+(nzOnConfirm)="confirm()"
+(nzOnCancel)="cancel()"
+>
+Delete
+</a>
+
+<h2>-progress</h2>
+
+<nz-progress [nzPercent]="30"></nz-progress>
+<nz-progress [nzPercent]="50" nzStatus="active"></nz-progress>
+<nz-progress [nzPercent]="70" nzStatus="exception"></nz-progress>
+<nz-progress [nzPercent]="100"></nz-progress>
+<nz-progress [nzPercent]="50" [nzShowInfo]="false"></nz-progress>
+
+<h2>-result</h2>
+
+<nz-result nzStatus="403" nzTitle="403" nzSubTitle="Sorry, you are not authorized to access this page.">
+  <div nz-result-extra>
+    <button nz-button nzType="primary">Back Home</button>
+  </div>
+</nz-result>
+
+<h2>-skeleton</h2>
+
+<nz-skeleton [nzActive]="true"></nz-skeleton>
+
+<h2>-spin</h2>
+
+<nz-spin style="font-size: 20px;" nzSimple></nz-spin> 
+
+<h2>-anchor</h2>
+
+<nz-anchor>
+  <nz-link nzHref="#components-anchor-demo-basic" nzTitle="Basic demo"></nz-link>
+  <nz-link nzHref="#components-anchor-demo-static" nzTitle="Static demo"></nz-link>
+  <nz-link nzHref="#api" nzTitle="API">
+    <nz-link nzHref="#nz-anchor" nzTitle="nz-anchor"></nz-link>
+    <nz-link nzHref="#nz-link" nzTitle="nz-link"></nz-link>
+  </nz-link>
+</nz-anchor>
+
+<h2>-back-top</h2>
+
+<nz-back-top [nzTemplate]="tpl" [nzVisibilityHeight]="100">
+  <ng-template #tpl>
+    <div class="ant-back-top-inner">UP</div>
+  </ng-template>
+</nz-back-top>
+Scroll down to see the bottom-right
+<strong>blue</strong>
+button.
+
+<h2>-form</h2>
+
+<!-- <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm">
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your username!">
+      <nz-input-group nzPrefixIcon="user">
+        <input formControlName="userName" nz-input placeholder="Username" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-input-group nzPrefixIcon="lock">
+        <input formControlName="password" nz-input type="password" placeholder="Password" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" [disabled]="!validateForm.valid">Log in</button>
+    </nz-form-control>
+  </nz-form-item>
+</form> -->
