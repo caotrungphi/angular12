@@ -12,7 +12,16 @@
 <select  (change)="change($event)">
     <option value="{{data.city}}" *ngFor="let data of dataVietnam">{{data.city}}</option>
 </select>
-<select >
+<select (change)="changeDistric($event)">
     <option value="">Quận/Huyện</option>
-    <option *ngFor="let dis of distric" >{{dis}}</option>
+    <option value="{{dis}}" *ngFor="let dis of distric" >{{dis}}</option>
 </select>
+
+
+<ul [ngSwitch] ="name">
+    <li *ngSwitchCase="'Quận 1'"><span>{{name}}</span></li>
+    <li *ngSwitchCase="'Quận 2'"><span>{{name}}</span></li>
+    <li *ngSwitchDefault><span>{{name}}</span></li>
+</ul>
+
+<div [appHightLight]="color">hightlight</div>

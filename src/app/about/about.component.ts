@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../server/common.service';
 
 @Component({
   selector: 'app-about',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AboutComponent implements OnInit {
   public name = 'cao trung phi';
   public age = 12;
+  public color = 'blue';
   public distric: string[] = [];
   public dataVietnam = [
     {
@@ -45,9 +47,11 @@ export class AboutComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(private common: CommonService) { }
 
   ngOnInit(): void {
+    this.age = this.common.binhphuong(this.common.number);
+    this.common.number++;
   }
 
   change(e: any): void {
@@ -55,4 +59,9 @@ export class AboutComponent implements OnInit {
     if(result)
     this.distric = result;
   }
+  changeDistric(e: any): void {
+    this.name = e.target.value;
+  }
+
+
 }
