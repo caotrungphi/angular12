@@ -5,6 +5,14 @@
 <span *ngIf="age"> năm nay bạn {{age}}</span>
 <br/>
 <div *ngIf="age <=18; then tre; else gia"></div>
-    <ng-template #tre>bạn còn trẻ quá</ng-template>
-    <ng-template #gia>bạn đã gìa rồi</ng-template>
-
+<ng-template #tre>bạn còn trẻ quá</ng-template>
+<ng-template #gia>bạn đã gìa rồi</ng-template>
+<br/>
+ <!-- combo box -->
+<select  (change)="change($event)">
+    <option value="{{data.city}}" *ngFor="let data of dataVietnam">{{data.city}}</option>
+</select>
+<select >
+    <option value="">Quận/Huyện</option>
+    <option *ngFor="let dis of distric" >{{dis}}</option>
+</select>
