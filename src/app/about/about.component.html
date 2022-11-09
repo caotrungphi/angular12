@@ -1,1 +1,10 @@
 <p>about works!</p>
+
+<input type="text" [(ngModel)]="age">
+<br/>
+<span *ngIf="age"> năm nay bạn {{age}}</span>
+<br/>
+<div *ngIf="age <=18; then tre; else gia"></div>
+    <ng-template #tre>bạn còn trẻ quá</ng-template>
+    <ng-template #gia>bạn đã gìa rồi</ng-template>
+

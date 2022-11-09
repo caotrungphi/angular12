@@ -2,3 +2,22 @@
 <div class="red">
     <span>home comming</span>
 </div>
+
+<ul *ngFor="let trai of traicay; let i = index">
+    <li>{{i + 1}} : {{trai.ten}}</li>
+</ul>
+
+<table>
+  <tr>
+    <td>STT</td>
+    <td>Tên</td>
+    <td>Giá</td>
+    <td>giảm giá</td>
+  </tr>
+  <tr *ngFor="let trai of traicay; let i = index">
+    <td>{{i + 1}}</td>
+    <td>{{trai.ten}}</td>
+    <td [ngClass]="{ red : trai.gia < 20 }">{{trai.gia}}</td>
+    <td *ngIf="trai.giamgia">đang giảm giá</td>
+  </tr>
+</table>
